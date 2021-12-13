@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Malick's Blog - Article{% endblock %}
+{% block content %}
+
+        <h1>{{ posts.title }}</h1>
+        <h6>{{ posts.created_at }}</h6>
+        <p>{{ posts.body }}</p>
+
+{% endblock %}

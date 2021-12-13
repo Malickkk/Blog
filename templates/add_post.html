@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Add a new article{% endblock %}
+{% block content %}
+<div">
+  <h3>Create a new post</h3>
+</div>
+<div class="form-group">
+      <form method="post"> 
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+  </div>
+
+{% endblock %}
