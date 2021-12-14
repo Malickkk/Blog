@@ -21,4 +21,3 @@ class add_post(CreateView):
     model = Posts
     form_class = PostForm
     template_name = 'add_post.html'
-    # fields = ['title', 'body', ]
