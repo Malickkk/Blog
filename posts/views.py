@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .forms import PostForm
 from .models import Posts
@@ -21,3 +21,17 @@ class add_post(CreateView):
     model = Posts
     form_class = PostForm
     template_name = 'add_post.html'
+
+
+class update_post(UpdateView):
+    model = Posts
+    form_class = PostForm
+    template_name = 'update_post.html'
+    success_url = '/'
+
+
+class delete_post(DeleteView):
+    model = Posts
+    form_class = PostForm
+    template_name = 'delete_post.html'
+    success_url = '/'

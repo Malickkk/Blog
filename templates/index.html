@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="content">
-  <a href="{% url 'add_post' %}">Create a new post</a>
+  <a href="{% url 'add_post' %}" class="btn btn-primary">Create a new post</a>
 </div>
 
 <div class="row">
@@ -16,6 +16,11 @@
         
         <h6>{{post.created_at}}</h6>
       </a>
+      <div>
+        <a href="{% url 'update_post' post.pk %}" class="btn btn-secondary">Update</a>
+        <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger">Delete</a>
+      </div>
+      
     </div>
     {% endfor %}
   </div>
