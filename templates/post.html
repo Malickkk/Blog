@@ -4,6 +4,6 @@
 
         <h1>{{ posts.title }}</h1>
         <h6>{{ posts.created_at }}</h6>
-        <p>{{ posts.body }}</p>
+        <p>{{ posts.body | safe }}</p>
 
 {% endblock %}

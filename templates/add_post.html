@@ -4,6 +4,7 @@
 <div">
   <h3>Create a new post</h3>
 </div>
+{% if user.is_authenticated %}
 <div class="form-group">
       <form method="post"> 
         {% csrf_token %}
@@ -11,5 +12,10 @@
         <input class="btn btn-primary" type="submit" value="Submit">
     </form>
   </div>
+  {% else %}
+
+You are not allowed to post on this blog without login first!
+
+{% endif %}
 
 {% endblock %}

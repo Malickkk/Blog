@@ -5,6 +5,7 @@
 <h1>Delete a Post</h1> <br><br>
 <h3>Delete: {{ posts.title }}</h3>
 <br>
+{% if user.is_authenticated %}
 <div class="form-group">
     <form method="post">{% csrf_token %}
         <strong>Are you sure?</strong><br>
@@ -13,5 +14,10 @@
         
     </form>
 </div>
+{% else %}
+
+You are not allowed to delete this post, login first!
+
+{% endif %}
 
 {% endblock %}

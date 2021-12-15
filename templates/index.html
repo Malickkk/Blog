@@ -2,24 +2,22 @@
 
 {% block content %}
 
-<div class="content">
-  <a href="{% url 'add_post' %}" class="btn btn-primary">Create a new post</a>
-</div>
-
 <div class="row">
   <div class="leftcolumn">
     {% for post in object_list reversed %}
     <div class="card">
       <a style="text-decoration: none; color: black;" href="{% url 'post' post.pk %}">
         <h2>{{post.title}}</h2>
-        <p>{{post.body|truncatewords:20}}</p>
+        <p>{{post.body|truncatewords:20|safe}}</p>
         
         <h6>{{post.created_at}}</h6>
       </a>
+      {% if user.is_authenticated %}
       <div>
         <a href="{% url 'update_post' post.pk %}" class="btn btn-secondary">Update</a>
         <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger">Delete</a>
       </div>
+      {% endif %}
       
     </div>
     {% endfor %}
