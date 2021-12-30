@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+
+<div class="container">
+
+  <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+                      <div class="text-center">
+                          <h1 class="h4 text-gray-900 mb-4">Sign Up</h1>
+                      </div>
+                      <form class="user" method="post">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            
+                        {{ form.as_p }}
+                        </div>
+                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account" />
+                            
+                    </form>
+                      <hr>
+                      <div class="text-center">
+                          <a class="small" href="{% url 'login' %}">Already have an account? Login!</a>
+                      </div>
+                  </div>
+              </div>
+</div>
+{% endblock %}

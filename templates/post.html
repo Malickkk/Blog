@@ -3,7 +3,7 @@
 {% block content %}
 
         <h1>{{ posts.title }}</h1>
-        <h6>{{ posts.created_at }}</h6>
+        <h6>{{ posts.created_at }}, posted by {{ posts.author}}</h6><br>
         <p>{{ posts.body | safe }}</p>
 
 {% endblock %}
