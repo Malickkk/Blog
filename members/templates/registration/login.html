@@ -12,9 +12,12 @@
                               <div class="text-center">
                                   <h1 class="h4 text-gray-900 mb-4">Login</h1>
                               </div>
-                              <form class="user" method="post">
+                              {% for message in messages %}
+                              <p id="message">{{message}}</p>
+                              {% endfor %}
+                              <form class="user" method="post" action="">
                                 {% csrf_token %}
-                                {{ form.as_p }}
+                                  {{form.as_p }}
                                   <div class="form-group">
                                       <div class="custom-control custom-checkbox small">
                                           <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -25,9 +28,6 @@
                                   <input type="submit" class="btn btn-primary btn-user btn-block" value="Login" />
                                       <!-- Login
                                   </input> -->
-                                  {% for message in messages %}
-                                  {{message}}
-                                  {%endfor %}
                               </form>
                               <hr>
                               <div class="text-center">
@@ -41,5 +41,5 @@
           </div>
       </div>
   </div>
-
+  
 {% endblock %}

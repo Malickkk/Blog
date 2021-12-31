@@ -4,7 +4,9 @@ from django.shortcuts import redirect
 from django.template import RequestContext
 from django.contrib.auth import login, authenticate
 
+
 from .forms import CustomUserCreationForm, LoginForm
+from .decorators import unauthenticated_user
 
 
 def signup(request):
@@ -21,6 +23,7 @@ def signup(request):
     return render(request, 'signup.html', context)
 
 
+@unauthenticated_user
 def login(request):
     form = LoginForm()
     message = ''
@@ -33,15 +36,15 @@ def login(request):
             )
             if user is not None:
                 login(request, user)
-                message = f'Hey! {user.username}! You have been logged in'
+                messages.info('Hey! {user.username}! You have been logged in')
             else:
-                message = f'Login failed!'
+                messages.info('Incorrect credentials. Login failed!')
     context = {'form': form, 'message': message}
     return render(request, 'login.html', context)
 
 
 def logout(request):
     logout(request)
-    return redirect('login')
+    return redirect('index')
 
 # Create your views here.

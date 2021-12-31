@@ -37,5 +37,16 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(max_length=100)
+    class Meta:
+        model = User
+        fields = [
+            'username', 'password', 'email'
+        ]
+
+    username = forms.Field(widget=forms.TextInput(attrs={
+        'class': 'form-control, form-control-user',
+        'placeholder': 'Username',
+    }))
+    password = forms.CharField(max_length=100, widget=forms.PasswordInput)
+    password = forms.CharField(max_length=100, widget=forms.PasswordInput)
     password = forms.CharField(max_length=100, widget=forms.PasswordInput)

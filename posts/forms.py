@@ -11,9 +11,13 @@ class blogForm(forms.Form):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Posts
-        fields = ('title', 'body')
+        fields = ('title', 'author', 'body')
 
-        widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'body': forms.Textarea(attrs={'class': 'form-control'}),
-        }
+        # widgets = {
+        #     'title': forms.TextInput(attrs={'class': 'form-control'}),
+        #     'author': forms.ModelChoiceField(queryset=Posts.objects.filter()),
+        #     'body': forms.Textarea(attrs={'class': 'form-control'}),
+        # }
+        def __init__(self, author, *args, **kwargs):
+            self.fields['author'].queryset = Posts.objects.filter(
+                author=author)
