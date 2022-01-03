@@ -2,8 +2,8 @@
 {% block title %}Malick's Blog - Article{% endblock %}
 {% block content %}
 
-        <h1>{{ posts.title }}</h1>
-        <h6>{{ posts.created_at }}, posted by {{ posts.author}}</h6><br>
-        <p>{{ posts.body | safe }}</p>
+        <h1>{{ post.title }}</h1>
+        <h6>{{ post.created_at }}, posted by {{ post.author.id}}</h6><br>
+        <p>{{ post.body | safe }}</p>
 
 {% endblock %}

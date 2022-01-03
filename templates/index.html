@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="leftcolumn">
-    {% for post in object_list reversed %}
+    {% for post in posts reversed %}
     <div class="card">
       <a style="text-decoration: none; color: black;" href="{% url 'post' post.pk %}">
         <h2>{{post.title}}</h2>
@@ -14,7 +14,7 @@
         <h6>{{post.created_at}}</h6>
         
       </a>
-      {% if user.is_authenticated %}
+      {% if user.is_authenticated and user.id == post.author.id %}
       <div>
         <a href="{% url 'update_post' post.pk %}" class="btn btn-secondary">Update</a>
         <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger">Delete</a>

@@ -1,17 +1,15 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.shortcuts import redirect
-from django.template import RequestContext
 from django.contrib.auth import login, authenticate
 
 
 from .forms import CustomUserCreationForm, LoginForm
 from .decorators import unauthenticated_user
 
-
+@unauthenticated_user
 def signup(request):
     form = CustomUserCreationForm()
-
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
