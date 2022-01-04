@@ -14,21 +14,24 @@ def index(request):
     context = {'posts': posts}
     return render(request, 'index.html', context)
 
+
 @login_required
 def post(request, id):
     post = Posts.objects.get(id=id)
     context = {'post': post}
     return render(request, 'post.html', context)
 
+
 @login_required
 def add_post(request):
     post = PostForm(request.POST or None)
     if post.is_valid():
-        post.instance.author = request.user #add current user as author of the post
+        post.instance.author = request.user  # add current user as author of the post
         post.save()
         return redirect('index')
     context = {'post': post}
     return render(request, 'add_post.html', context)
+
 
 @login_required
 def update_post(request, id):
@@ -42,10 +45,12 @@ def update_post(request, id):
     context = {'form': form}
     return render(request, 'update_post.html', context)
 
+
 @login_required
 def delete_post(request, id):
     post = get_object_or_404(Posts, id=id)
-    if PostForm(request.POST).instance.author != request.user:
+    form = PostForm(request.POST or None, instance=post)
+    if form.instance.author != request.user:
         return redirect('index')
     if request.method == 'POST':
         post.delete()

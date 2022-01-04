@@ -8,8 +8,8 @@
     <div class="card">
       <a style="text-decoration: none; color: black;" href="{% url 'post' post.pk %}">
         <h2>{{post.title}}</h2>
-        <p>{{post.body|truncatewords:20|safe}}</p>
-        <p>Posted by {{post.author}}</p>
+        <p>{{post.body|truncatewords:50|safe}}</p>
+        <p>Author: {{post.author}}</p>
         
         <h6>{{post.created_at}}</h6>
         
